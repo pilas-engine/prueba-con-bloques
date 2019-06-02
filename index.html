@@ -31,6 +31,10 @@
      <script src="blockly/bloques-personalizados/test_blocks.js"></script>
      <script src="blockly/bloques-personalizados/pxt_test_blocks.js"></script>
 
+     <script src="pilas-engine/phaser.js"></script>
+     <script src="pilas-engine/nineslice.js"></script>
+     <script src="pilas-engine/pilas-engine.js"></script>
+
     <title>Pilas con Bloques</title>
   </head>
 
@@ -65,48 +69,56 @@
 
   <script type="text/javascript">
 
-    function iniciar() {
+    function iniciar_pilas() {
+      var pilas = pilasengine.iniciar(400, 300);
 
-  workspace = Blockly.inject('blockly',
-      {
-        comments: false,
-        collapse: false,
-        grid:
-          {
-            spacing: 25,
-            length: 5,
-            colour: '#ccc',
-            snap: true
-          },
-        horizontalLayout: true,
-        media: 'blockly/media/',
-        oneBasedIndex: true,
-        scrollbars: true,
-        toolbox: document.getElementById('toolbox'),
-        toolboxPosition: 'start',
-        trashcan: true,
-        toolboxOptions:
-          {
-            color: true,
-            inverted: true
-          },
-        zoom:
-          {
-            controls: true,
-            wheel: true,
-            startScale: 1.0,
-            maxScale: 4,
-            minScale: .25,
-            scaleSpeed: 1.1
-          }
-      });
+      pilas.onready = function() {
+        let actor = pilas.actores.nave();
+        actor.aprender("arrastrable");
+      };
     }
+
+    function iniciar_blockly() {
+      workspace = Blockly.inject('blockly',
+          {
+            comments: false,
+            collapse: false,
+            grid:
+              {
+                spacing: 25,
+                length: 5,
+                colour: '#ccc',
+                snap: true
+              },
+            horizontalLayout: true,
+            media: 'blockly/media/',
+            oneBasedIndex: true,
+            scrollbars: true,
+            toolbox: document.getElementById('toolbox'),
+            toolboxPosition: 'start',
+            trashcan: true,
+            toolboxOptions:
+              {
+                color: true,
+                inverted: true
+              },
+            zoom:
+              {
+                controls: true,
+                wheel: true,
+                startScale: 1.0,
+                maxScale: 4,
+                minScale: .25,
+                scaleSpeed: 1.1
+              }
+          });
+        }
   </script>
 
-  <body onload="iniciar()">
+  <body onload="iniciar_blockly(); iniciar_pilas()">
     <div class="flex">
-      <div class="flex1 ba pa">
-        canvas para pilas
+      <div class="pa">
+        <div id="game"></div>
       </div>
       <div id="blockly" class="flex1"></div>
     </div>
