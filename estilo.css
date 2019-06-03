@@ -1,0 +1,24 @@
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
+#blockly {
+  height: 100vh;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex1 {
+  flex: 1;
+}
+
+.ba {
+  border: 1px solid;
+}
+
+.pa {
+  padding: 0.5em;
+}

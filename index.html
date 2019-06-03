@@ -35,85 +35,12 @@
      <script src="pilas-engine/nineslice.js"></script>
      <script src="pilas-engine/pilas-engine.js"></script>
 
-    <title>Pilas con Bloques</title>
+     <script src="blockly.js" charset="utf-8"></script>
+     <script src="pilas.js" charset="utf-8"></script>
+
+     <link rel="stylesheet" href="estilo.css">
+     <title>Pilas con Bloques</title>
   </head>
-
-  <style media="screen">
-    body {
-      margin: 0;
-      overflow: hidden;
-    }
-
-    #blockly {
-      height: 100vh;
-    }
-
-    .flex {
-      display: flex;
-    }
-
-    .flex1 {
-      flex: 1;
-    }
-
-    .ba {
-      border: 1px solid;
-    }
-
-    .pa {
-      padding: 0.5em;
-    }
-
-
-  </style>
-
-  <script type="text/javascript">
-
-    function iniciar_pilas() {
-      var pilas = pilasengine.iniciar(400, 300);
-
-      pilas.onready = function() {
-        let actor = pilas.actores.nave();
-        actor.aprender("arrastrable");
-      };
-    }
-
-    function iniciar_blockly() {
-      workspace = Blockly.inject('blockly',
-          {
-            comments: false,
-            collapse: false,
-            grid:
-              {
-                spacing: 25,
-                length: 5,
-                colour: '#ccc',
-                snap: true
-              },
-            horizontalLayout: true,
-            media: 'blockly/media/',
-            oneBasedIndex: true,
-            scrollbars: true,
-            toolbox: document.getElementById('toolbox'),
-            toolboxPosition: 'start',
-            trashcan: true,
-            toolboxOptions:
-              {
-                color: true,
-                inverted: true
-              },
-            zoom:
-              {
-                controls: true,
-                wheel: true,
-                startScale: 1.0,
-                maxScale: 4,
-                minScale: .25,
-                scaleSpeed: 1.1
-              }
-          });
-        }
-  </script>
 
   <body onload="iniciar_blockly(); iniciar_pilas()">
     <div class="flex">
@@ -126,8 +53,10 @@
 
     <xml id="toolbox" style="display: none">
       <block type="text"></block>
+      <block type="text_join"></block>
       <block type="image_datauri"></block>
-      <block type="example_dropdown_images"></block>
+      <block type="controls_if"></block>
+      <block type="logic_boolean"></block>
     </xml>
 
   </body>
